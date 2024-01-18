@@ -41,7 +41,6 @@ func main() {
 
 	r := gin.Default()
 
-	// api /items จะเป็นการเรียกใช้งานฟังก์ชัน GetItems ใน ItemRepository
 	r.GET("/items", itemRepo.GetItems)
 
 	// api /items/:id จะเป็นการเรียกใช้งานฟังก์ชัน GetItem ใน ItemRepository
