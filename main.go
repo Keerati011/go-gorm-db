@@ -5,9 +5,11 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/Keerati011/go-gorm-db/db"
 	"github.com/Keerati011/go-gorm-db/models"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -40,6 +42,16 @@ func main() {
 	subRepo := models.NewSubjectRepository(database)
 
 	r := gin.Default()
+
+	// กำหนด cors (Cross-Origin Resource Sharing)
+	r.Use(cors.New(cors.Config{
+		// 3000 คือ port ที่ใช้งานใน frontend react
+		AllowOrigins:     []string{"http://localhost:5173"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
+		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 
 	r.GET("/items", itemRepo.GetItems)
 
