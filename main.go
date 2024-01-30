@@ -46,7 +46,7 @@ func main() {
 	// กำหนด cors (Cross-Origin Resource Sharing)
 	r.Use(cors.New(cors.Config{
 		// 3000 คือ port ที่ใช้งานใน frontend react
-		AllowOrigins:     []string{"http://localhost:5173"},
+		AllowOrigins:     []string{"http://localhost:5174"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
 		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type"},
 		AllowCredentials: true,
